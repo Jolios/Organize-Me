@@ -19,3 +19,11 @@ C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuPages.
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuTextbox.dll
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuPages.xml
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuTextbox.xml
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.dll
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.ToggleSwitch.dll
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuDatePicker.xml
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.ToggleSwitch.xml
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.dll
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.xml
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.xml

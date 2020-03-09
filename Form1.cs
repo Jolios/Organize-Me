@@ -20,14 +20,21 @@ namespace Organize_Me
             bunifuFormDock1.SubscribeControlToDragEvents(tabPage2);
         }
 
+
+
+        private void bunifuButton3_Click(object sender, EventArgs e)
+        {
+            bunifuPages1.SetPage(1);
+        }
+
         private void bunifuButton1_Click(object sender, EventArgs e)
         {
             bunifuPages1.SetPage(0);
         }
 
-        private void bunifuButton3_Click(object sender, EventArgs e)
+        private void bunifuTextBox7_TextChanged(object sender, EventArgs e)
         {
-            bunifuPages1.SetPage(1);
+
         }
     }
 }

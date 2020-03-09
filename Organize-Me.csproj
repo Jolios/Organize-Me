@@ -43,8 +43,14 @@
     <Reference Include="Bunifu.UI.WinForms.BunifuFormDock">
       <HintPath>..\..\..\Downloads\Bunifu Winforms 1.11.5.1 &amp; DataViz 1.1.1.5 Crack\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuFormDock.dll</HintPath>
     </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuLabel">
+      <HintPath>..\..\..\Downloads\Bunifu Winforms 1.11.5.1 &amp; DataViz 1.1.1.5 Crack\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuLabel.dll</HintPath>
+    </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuPages">
       <HintPath>..\..\..\Downloads\Bunifu Winforms 1.11.5.1 &amp; DataViz 1.1.1.5 Crack\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuPages.dll</HintPath>
+    </Reference>
+    <Reference Include="Bunifu.UI.WinForms.BunifuRadioButton">
+      <HintPath>..\..\..\Downloads\Bunifu Winforms 1.11.5.1 &amp; DataViz 1.1.1.5 Crack\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuRadioButton.dll</HintPath>
     </Reference>
     <Reference Include="Bunifu.UI.WinForms.BunifuTextbox">
       <HintPath>..\..\..\Downloads\Bunifu Winforms 1.11.5.1 &amp; DataViz 1.1.1.5 Crack\Bunifu UI WinForms 1.11.5.1\Bunifu.UI.WinForms.BunifuTextbox.dll</HintPath>
