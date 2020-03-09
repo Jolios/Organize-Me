@@ -27,3 +27,9 @@ C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.dll
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuLabel.xml
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuRadioButton.xml
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.dll
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuImageButton.xml
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.xml
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.dll
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Bunifu.UI.WinForms.BunifuProgressBar.xml
