@@ -41,3 +41,5 @@ C:\Users\Acer\source\repos\Organize-Me\bin\Debug\RestSharp.dll
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\OAuth2.pdb
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\OAuth2.xml
 C:\Users\Acer\source\repos\Organize-Me\bin\Debug\RestSharp.xml
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Database1.mdf
+C:\Users\Acer\source\repos\Organize-Me\bin\Debug\Database1_log.ldf
