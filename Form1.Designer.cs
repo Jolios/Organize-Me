@@ -448,7 +448,7 @@
             this.btn_GSignup.AnimationSpeed = 200;
             this.btn_GSignup.AutoGenerateColors = false;
             this.btn_GSignup.BackColor = System.Drawing.Color.Transparent;
-            this.btn_GSignup.BackColor1 = System.Drawing.Color.MediumBlue;
+            this.btn_GSignup.BackColor1 = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(244)))));
             this.btn_GSignup.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_GSignup.BackgroundImage")));
             this.btn_GSignup.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.btn_GSignup.ButtonText = "SIGN UP WITH GOOGLE";
@@ -475,7 +475,7 @@
             this.btn_GSignup.IdleBorderColor = System.Drawing.Color.White;
             this.btn_GSignup.IdleBorderRadius = 35;
             this.btn_GSignup.IdleBorderThickness = 2;
-            this.btn_GSignup.IdleFillColor = System.Drawing.Color.MediumBlue;
+            this.btn_GSignup.IdleFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(133)))), ((int)(((byte)(244)))));
             this.btn_GSignup.IdleIconLeftImage = ((System.Drawing.Image)(resources.GetObject("btn_GSignup.IdleIconLeftImage")));
             this.btn_GSignup.IdleIconRightImage = null;
             this.btn_GSignup.IndicateFocus = false;

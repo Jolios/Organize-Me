@@ -36,7 +36,7 @@ namespace Organize_Me
         public bool isListening = true;
         private int CurrentUserId;
         private Image UserImage=Resources.kindpng_4952535;
-        private String ConnectionString = @"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False";
+        private String ConnectionString = @"Data Source = .\; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False";
         public Form2(int CurrentUserId)
         {
             InitializeComponent();
@@ -458,7 +458,7 @@ namespace Organize_Me
             bunifuDataGridView1.Rows.Clear();
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB;MultipleActiveResultSets=true; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(@"Data Source = .\; Initial Catalog = OrganizeMeDB;MultipleActiveResultSets=true; Integrated Security = True; Pooling = False");
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -692,28 +692,34 @@ namespace Organize_Me
                 Bunifu.Snackbar.Show(this, "Please fill out all fields", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
                 return;
             }
-            try
-            {
-                SqlConnection con = new SqlConnection();
-                con.ConnectionString = this.ConnectionString;
-                SqlCommand cmd = new SqlCommand();
-                con.Open();
-                cmd.CommandText = "SELECT First_Name,Last_Name FROM [Child] WHERE First_Name = @FirstName AND Last_Name = @LastName AND IdUser=@UserId";
-                cmd.Connection = con;
-                cmd.Parameters.AddWithValue("@FirstName", this.txt_ChildFName.Text);
-                cmd.Parameters.AddWithValue("@LastName", this.txt_ChildLName.Text);
-                cmd.Parameters.AddWithValue("@UserId", this.CurrentUserId);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
+            string selectedvalue = ChildrenNames.SelectedValue.ToString();
+            String First_Name = selectedvalue.Substring(0, selectedvalue.IndexOf(" "));
+            String Last_Name = selectedvalue.Substring(selectedvalue.IndexOf(" ") + 1);
+            //if the user wants to edit child's name 
+            if (!First_Name.Equals(txt_ChildFName.Text) || !Last_Name.Equals(txt_ChildLName.Text)){
+                try
                 {
-                    Bunifu.Snackbar.Show(this, "Two children can't have the same name", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
-                    return;
+                    SqlConnection con = new SqlConnection();
+                    con.ConnectionString = this.ConnectionString;
+                    SqlCommand cmd = new SqlCommand();
+                    con.Open();
+                    cmd.CommandText = "SELECT First_Name,Last_Name FROM [Child] WHERE First_Name = @FirstName AND Last_Name = @LastName AND IdUser=@UserId";
+                    cmd.Connection = con;
+                    cmd.Parameters.AddWithValue("@FirstName", this.txt_ChildFName.Text);
+                    cmd.Parameters.AddWithValue("@LastName", this.txt_ChildLName.Text);
+                    cmd.Parameters.AddWithValue("@UserId", this.CurrentUserId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        Bunifu.Snackbar.Show(this, "Two children can't have the same name", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
+                        return;
 
-                }
-                reader.Close();
-                cmd.Dispose();
-                con.Close();
-            }catch(Exception ex) { MessageBox.Show(ex.Message); }
+                    }
+                    reader.Close();
+                    cmd.Dispose();
+                    con.Close();
+                } catch (Exception ex) { MessageBox.Show(ex.Message); }
+            }
             try
             {
                 int n = int.Parse(txt_Home_School_Dist.Text);
@@ -723,9 +729,7 @@ namespace Organize_Me
                 Bunifu.Snackbar.Show(this, "Invalid format", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
                 return;
             }
-            string selectedvalue = ChildrenNames.SelectedValue.ToString();
-            String First_Name = selectedvalue.Substring(0, selectedvalue.IndexOf(" "));
-            String Last_Name = selectedvalue.Substring(selectedvalue.IndexOf(" ") + 1);
+            
             try
             {
                 SqlConnection con = new SqlConnection(ConnectionString);
@@ -1164,6 +1168,7 @@ namespace Organize_Me
         private void edit_fonts()
         {
             Font font = new Font("Segoe UI", 10);
+            txt_UserName.Font = font;
             bunifuLabel1.Font = font;
             bunifuLabel33.Font = font;
             bunifuLabel43.Font = font;

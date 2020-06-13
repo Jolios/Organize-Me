@@ -94,7 +94,7 @@ namespace Organize_Me
                 case "btn_SignIn"         : if (crud.SignInVerification(this))
                                             {
                                                 CurrentUserId = crud.getCurrentUserId(txt_SignInEmail.Text);
-                                                Form2 f2 = new Form2(1);
+                                                Form2 f2 = new Form2(CurrentUserId);
                                                 f2.Show();
                                                 this.Hide();
                                             }

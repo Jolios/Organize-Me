@@ -197,13 +197,14 @@ namespace Organize_Me
         {
             Font font = new Font("Segoe UI", 14, FontStyle.Bold);
             bunifuLabel6.Font = font;
+            font = new Font("Segoe UI", 12);
+            bunifuLabel7.Font = font;
             font = new Font("Segoe UI Semibold", 14);
             bunifuLabel1.Font = font;
             bunifuLabel2.Font = font;
             bunifuLabel3.Font = font;
             bunifuLabel4.Font = font;
             bunifuLabel5.Font = font;
-            bunifuLabel7.Font = font;
             bunifuLabel8.Font = font;
             bunifuLabel9.Font = font;
             bunifuLabel10.Font = font;

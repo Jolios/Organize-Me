@@ -841,38 +841,38 @@
   </data>
   <data name="btn_twitter_signUp.IdleIconLeftImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAGXSURBVEhL7ZU9KIRhHMCPTgbqTIhJMRh8ZUGRbJfFosyKMjBKySSxiFI+siiDyyabSBSZKPkq
-        C4PFZiGfr9//ef+Hc+/dPXnfMvCrX9fz/3ru43nvCf3zKziO04IreIYnuIwNmjawrsWc+KIcB8zCEuon
-        0Is3HMN+3MRVbTFNI/iKfRpKC3U9aMMplmBlvHFJosoU5pqEB+Sy8UYKMyBv/ACv8WOjafzKMbaa5DeI
-        V5kKO26xUVtNc4cJJ7ODXZivpVLbLAlLotrmQiCMhyblzQPu4SzOSMCSet3ChUA7tuGlZAOkVLdwITDn
-        xp1nfQ2CRwzrFi4EoiYVLNs6/hOCWbhh0sExpOMTIZGHa6bEPy9YoaOTIVmD43iHfojpSG8oGHbrfCGf
-        plpHekOBfH3yvPhhVMelh8IILuBPjvo+Jh7pTNBQiJPSbckRFmm7HTTUoVxocrfYsIsF2u4NBWXYi4M4
-        j3Jb2vKEckpTXisJUNiE62j7u9yj3GGpn5V00FiM3biIcvou8ArPcQvln7sTI9ryZwmF3gGRx5zZh0kU
-        AAAAAABJRU5ErkJggg==
+        iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAAZdJREFUSEvt
+        lT0ohGEcwI9OBupMiEkxGHxlQZFsl8WizIoyMErJJLGIUj6yKIPLJptIFJko+SoLg8VmIZ+v3/95/4dz
+        7909ed8y8Ktf1/P/eu7jee8J/fMrOI7Tgit4hie4jA2aNrCuxZz4ohwHzMIS6ifQizccw37cxFVtMU0j
+        +Ip9GkoLdT1owymWYGW8cUmiyhTmmoQH5LLxRgozIG/8AK/xY6Np/MoxtprkN4hXmQo7brFRW01zhwkn
+        s4NdmK+lUtssCUui2uZCIIyHJuXNA+7hLM5IwJJ63cKFQDu24aVkA6RUt3AhMOfGnWd9DYJHDOsWLgSi
+        JhUs2zr+E4JZuGHSwTGk4xMhkYdrpsQ/L1iho5MhWYPjeId+iOlIbygYdut8IZ+mWkd6Q4F8ffK8+GFU
+        x6WHwggu4E+O+j4mHulM0FCIk9JtyREWabsdNNShXGhyt9iwiwXa7g0FZdiLgziPclva8oRySlNeKwlQ
+        2ITraPu73KPcYamflXTQWIzduIhy+i7wCs9xC+WfuxMj2vJnCYXeAZHHnNmHSRQAAAAAAElFTkSuQmCC
 </value>
   </data>
   <data name="btn_GSignup.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         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
-        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
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQPSURBVHhe7Z09aBRBGIZTWqZMmTJlypTB6ipJYRGsUkkK
+        i9jZCAGxSCGxUFIoqCCmUEhhEUFIQIKiTbQIEkS0EGIjCuY/uVu/d/Ktu2cmpzG5XHZ4XnjYu72db655
+        52dn59suhBA6srIsG3TGAaA9NBqNmh3ls2633slLlRsj9memjQ37jBDqgMx/88aYfex1e7ZPqsQqmwk1
+        l7S1k2VvP+8GHr3czh68AIB2kPvs22rD3VdIjYEdBt2uxycL2mPBp0ItroXl3WxydjO7cGstO3t9FQBO
+        mHM31rJrM5vZ3NJO9nOjaBC8k+5z+x5NFqjfAq6EyKYnr7dDxbE/BACdQZ7UCEGjcck8q6n5kNv4/2RB
+        huv1+qYCfvhap7cHOOWcv7kWRgQljbudDyeZ3wOEgLWJeIUAcPq4M7fl7g2jgUm39b/JCgzkPb+GFbEK
+        AOB0c/VxsUCnDt3t3Vp2rW74hTm/ev5YYACoBref740EzNMb6tjd5gfLLrqnAktf6gz7ARIgvydg3l50
+        m8dl1/Trwq2dRriZEAsGANVCHXnpuYGDVwashQgP+WipLxYIAKpJaSrwyQ5n3PKF7GSvLtADBazzA6SF
+        RgFaypesEai57QvZyVH9yI0/gDTRip43AFNu+0J2clY/TjzdjBYGgGpz8e563gCsuO0L5ev+DP8B0mXl
+        x++bgf1u/WL+rx9jhQAgDUpLgsV9APuuBANhm2GsEACkgVb4XCNu/9AAjOjMs3fcAARImdIegWKTkL7o
+        jJJ5xAoBQBq0bADY+AOQNvlSoKloAPJnAJgCAKSNsni5mhoAZRrN3nzkJiBAymiaL5nnx9z+YQrQp5N6
+        VDBWCADSQKN8yRqAIj+AfVea77APgC3AAOmibf6u5uzB1iK819nLDzeiBQGg2miLv2ReV6qg5h2BdiKs
+        BLAVGCBNtM9HsgZg1m1fyE4O6EclDmAaAJAeusnvKp4CLCufBih5QCwAAFST0k5ADf973PLNsh+GdBGj
+        AIC0KCUDaZ0i3C5Y1IU8FgyQBqW5v7J9708HVpZdEHYGSnrvWCwgAFSDS/fXleQ3JAGwBmDUbd5adqFe
+        NxyyAytALDAAnG70Kr88G7B5en8asFZSgbwRYCQAUC10069k/ld2aD30/1MqYAWnQwQTzwcAVAN12KVh
+        v8zf7bY+vKzwFQWSlDJM7xuLVQoAnUW9vrJ65TLz6y1fh+v5Y7JANUMvFAhSJdpWyNuDADqLkviqx19Y
+        bjL+d6PY7XccsriaEowp+F41e9L6oqYHSjSgRkFHAGgPMnv+udzbS+ZNvQB00j7+/5D/b1JwY8QqmlaF
+        qhgh1DmZD+cNrdzFn/Brp6zSQat82I7aTAQAJ4B5Tlm89MxO+3p7hFDK6ur6BWK3lOiDbC2sAAAAAElF
+        TkSuQmCC
 </value>
   </data>
   <data name="btn_GSignup.IdleIconLeftImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
