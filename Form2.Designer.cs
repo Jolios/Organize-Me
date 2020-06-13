@@ -1058,7 +1058,7 @@ namespace Organize_Me
             this.cp_parents.Location = new System.Drawing.Point(3, 18);
             this.cp_parents.Name = "cp_parents";
             this.cp_parents.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.cp_parents.ProgressColor = System.Drawing.Color.Purple;
+            this.cp_parents.ProgressColor = System.Drawing.Color.ForestGreen;
             this.cp_parents.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.cp_parents.Size = new System.Drawing.Size(100, 100);
             this.cp_parents.SubScriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
@@ -1176,7 +1176,7 @@ namespace Organize_Me
             this.cp_children.Location = new System.Drawing.Point(3, 18);
             this.cp_children.Name = "cp_children";
             this.cp_children.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.cp_children.ProgressColor = System.Drawing.Color.Purple;
+            this.cp_children.ProgressColor = System.Drawing.Color.ForestGreen;
             this.cp_children.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.cp_children.Size = new System.Drawing.Size(100, 100);
             this.cp_children.SubScriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
@@ -1412,7 +1412,7 @@ namespace Organize_Me
             this.cp_user.Location = new System.Drawing.Point(3, 18);
             this.cp_user.Name = "cp_user";
             this.cp_user.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.cp_user.ProgressColor = System.Drawing.Color.Purple;
+            this.cp_user.ProgressColor = System.Drawing.Color.ForestGreen;
             this.cp_user.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.cp_user.Size = new System.Drawing.Size(100, 100);
             this.cp_user.SubScriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));

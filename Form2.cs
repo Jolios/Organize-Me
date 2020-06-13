@@ -81,7 +81,7 @@ namespace Organize_Me
                 reader.Close();
                 cmd.Dispose();
                 con.Close();
-
+                txt_UserName.Location = new Point(btn_Profile.Location.X+((btn_Profile.Width-txt_UserName.Width)/2), btn_Profile.Location.Y - 30);
                 User_Photo.BorderRadius = 40;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -575,6 +575,7 @@ namespace Organize_Me
         public void btn_Calendar_Click(object sender, EventArgs e)
         {
             bunifuPages1.SetPage(1);
+            SfCalendar1_SelectionChanged(sfCalendar1, new SelectionChangedEventArgs(null, DateTime.Now, false));
         }
 
         public void bunifuImageButton1_Click(object sender, EventArgs e)
@@ -892,7 +893,6 @@ namespace Organize_Me
 
             }catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
-
         private void btn_DelSpouse_Click(object sender, EventArgs e)
         {
             try
@@ -931,13 +931,11 @@ namespace Organize_Me
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-
         private void btn_AddChild_Click(object sender, EventArgs e)
         {
             AddChildForm f = new AddChildForm(CurrentUserId, this);
             f.Show();
         }
-
         private void btn_DeleteChild_Click(object sender, EventArgs e)
         {
             try
@@ -1030,7 +1028,7 @@ namespace Organize_Me
                 label_userDone.Text = performed.ToString();
                 try
                 {
-                    cp_user.Value = (performed / total) * 100;
+                    cp_user.Value = (performed *100) / total;
                     cp_user.Text = cp_user.Value.ToString();
                     cp_user.SuperScriptMargin = new Padding(5, 26, 0, 0);
                 }
@@ -1055,7 +1053,7 @@ namespace Organize_Me
                 label_spouseDone.Text = performed.ToString();
                 try
                 {
-                    cp_spouse.Value = (performed / total) * 100;
+                    cp_spouse.Value = (performed * 100) / total;
                     cp_spouse.Text = cp_spouse.Value.ToString();
                     cp_spouse.SuperScriptMargin = new Padding(5, 26, 0, 0);
                 }
@@ -1080,7 +1078,7 @@ namespace Organize_Me
                 label_childrenDone.Text = performed.ToString();
                 try
                 {
-                    cp_children.Value = (performed / total) * 100;
+                    cp_children.Value = (performed * 100) / total;
                     cp_children.Text = cp_children.Value.ToString();
                     cp_children.SuperScriptMargin = new Padding(5, 26, 0, 0);
                 }
@@ -1105,7 +1103,7 @@ namespace Organize_Me
                 label_parentsDone.Text = performed.ToString();
                 try
                 {
-                    cp_parents.Value = (performed / total) * 100;
+                    cp_parents.Value = (performed * 100) / total;
                     cp_parents.Text = cp_spouse.Value.ToString();
                     cp_parents.SuperScriptMargin = new Padding(5, 26, 0, 0);
                 }
