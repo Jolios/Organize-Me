@@ -23,8 +23,12 @@ namespace Organize_Me
         public byte[] buffer;
         public int CurrentUserId = 0;
         internal static int NuChildren = 0;
-        internal List<Child> Children;
+        private bool isDivorcedAndHasChildren = false;
+        private bool isDivorced = false;
+        internal List<Childd> Children;
         private Font segoe = new Font("Segoe UI", 10);
+        public String FirstName = String.Empty;
+        public String LastName = String.Empty;
 
         
 
@@ -38,7 +42,7 @@ namespace Organize_Me
             bunifuFormDock1.SubscribeControlToDragEvents(tabPage4);
             bunifuFormDock1.SubscribeControlToDragEvents(tabPage5);
             CRUD crud = new CRUD();
-            Children = new List<Child>();
+            Children = new List<Childd>();
         }
 
 
@@ -87,24 +91,30 @@ namespace Organize_Me
                                             break;
                 case "btn_GradientSignUp" : bunifuPages1.SetPage(1);
                                             break;
-                case "btn_SignIn"         : //if (crud.SignInVerification(this))
-                                            //{
-                                                //CurrentUserId = crud.getCurrentUserId(txt_SignInEmail.Text);
+                case "btn_SignIn"         : if (crud.SignInVerification(this))
+                                            {
+                                                CurrentUserId = crud.getCurrentUserId(txt_SignInEmail.Text);
                                                 Form2 f2 = new Form2(1);
                                                 f2.Show();
                                                 this.Hide();
-                                            //}
+                                            }
                                             break;
-                case "btn_Continue"       : if (crud.ContinueBtnVerification(this))bunifuPages1.SetPage(2);
-                                            break;
+                case "btn_Continue"       : if (crud.ContinueBtnVerification(this))
+                                            {
+                                                bunifuPages1.SetPage(2);
+                                                txt_UserFName.Text = FirstName;
+                                                txt_UserLName.Text = LastName;
+                                            }
+                                                break;
                 case "btn_Back1"          : bunifuPages1.SetPage(1);
                                             break;
                 case "btn_Back2"          : bunifuPages1.SetPage(2);
                                             break;
-                case "btn_Back3"          : bunifuPages1.SetPage(3);
+                case "btn_Back3"          : if (isDivorced) bunifuPages1.SetPage(2);
+                                            else bunifuPages1.SetPage(3);
                                             break;
-                case "btn_Back4"          : if (!txt_ChN.Visible) bunifuPages1.SetPage(3);
-                                            else bunifuPages1.SetPage(4);
+                case "btn_Back4"          : if (txt_ChN.Visible || isDivorcedAndHasChildren) bunifuPages1.SetPage(4);
+                                            else bunifuPages1.SetPage(3);
                                             break;
                 case "btn_SignUp2"        : if (crud.ParentsVerification(this))
                                             {
@@ -120,7 +130,6 @@ namespace Organize_Me
                 default                   : break;
             }
         }
-
         private void btnUpload_Click(object sender, EventArgs e)
         {
             OpenFileDialog opnfd = new OpenFileDialog();
@@ -133,18 +142,41 @@ namespace Organize_Me
             this.buffer = File.ReadAllBytes(opnfd.FileName);
             
         }
-
-
-
         private void btn_Next1_Click(object sender, EventArgs e)
         {
             if (crud.InfoVerification(this))
             {
-                if (cb_MaritalStatus.SelectedItem.ToString().Equals("Married")) bunifuPages1.SetPage(3);
-                else bunifuPages1.SetPage(5);
+                if (cb_MaritalStatus.SelectedItem.ToString().Equals("Married"))
+                {
+                    isDivorced = false;
+                    isDivorcedAndHasChildren = false;
+                    bunifuPages1.SetPage(3);
+                }
+                else if (cb_MaritalStatus.SelectedItem.ToString().Equals("Divorced"))
+                {
+                    isDivorced = true;
+                    DialogResult dr = MessageBox.Show("Do you have children?",
+                      "Children Test", MessageBoxButtons.YesNo);
+                    switch (dr)
+                    {
+                        case DialogResult.Yes:
+                            isDivorcedAndHasChildren = true;
+                            bunifuPages1.SetPage(4);
+                            break;
+                        case DialogResult.No:
+                            isDivorcedAndHasChildren = false;
+                            bunifuPages1.SetPage(5);
+                            break;
+                    }
+                }
+                else
+                {
+                    isDivorced = false;
+                    isDivorcedAndHasChildren = false;
+                    bunifuPages1.SetPage(5);
+                }
             }
         }
-
         private void hasChildren(object sender, EventArgs e)
         {
             BunifuRadioButton r = (BunifuRadioButton)sender;
@@ -152,7 +184,6 @@ namespace Organize_Me
             label_howMany.Visible = expression;
             txt_ChN.Visible = expression;
         }
-
         private void btn_Next2_Click(object sender,EventArgs e)
         {
             
@@ -179,12 +210,6 @@ namespace Organize_Me
                 MessageBox.Show("Must be a number");
             }
         }
-        
-
-        
-
-        
-
         private void btn_Next3_Click(object sender, EventArgs e)
         {
             if (crud.ChildVerification(this))
@@ -195,7 +220,7 @@ namespace Organize_Me
                     String gender = rd_ChildGender1.Checked ? "Female" : "Male";
                     int distance = int.Parse(txt_Home_School_Dist.Text);
                     if (distanceUnit.SelectedItem.ToString().Equals("km")) distance *= 1000;
-                    Child c = new Child(txt_ChildFName.Text, txt_SchoolName.Text, txt_EduLvl.Text, gender, txt_ChildLName.Text, DP_ChildBDate.Value.Date, distance);
+                    Childd c = new Childd(txt_ChildFName.Text, txt_SchoolName.Text, txt_EduLvl.Text, gender, txt_ChildLName.Text, DP_ChildBDate.Value.Date, distance);
                     Children.Add(c);
                     count++;
                     txt_ChildLName.Text = String.Empty;
@@ -223,11 +248,15 @@ namespace Organize_Me
 
         private void btn_Google_SignUp_Click(object sender, EventArgs e)
         {
-            GoogleAuth g = new GoogleAuth();
-            g.Login();
+            GoogleAuth g = new GoogleAuth(this);
+            g.login();
         }
 
-    
+        private void btn_twitter_signUp_Click(object sender, EventArgs e)
+        {
+            TwitterAuth t = new TwitterAuth(this);
+            t.login();
+        }
     }
 }
 

@@ -20,7 +20,7 @@ namespace Organize_Me
         public CRUD()
         {
             this.currentId = 0;
-            this.ConnectionString = @"Data Source=DESKTOP-HSUI4QK;Initial Catalog=OrganizeMeDB;Integrated Security=True;Pooling=False";
+            this.ConnectionString = @"Data Source=.\;Initial Catalog=OrganizeMeDB;Integrated Security=True;Pooling=False";
         }
         public bool SignInVerification(Form1 f)
         {
@@ -272,6 +272,33 @@ namespace Organize_Me
                 Bunifu.Snackbar.Show(f, "Please fill out all fields", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
                 verif = false;
             }
+            try { 
+
+
+                int userId = getCurrentUserId(f.txt_SignUpEmail.Text);
+                con = new SqlConnection();
+                con.ConnectionString = this.ConnectionString;
+                cmd = new SqlCommand();
+                con.Open();
+                cmd.CommandText = "SELECT First_Name,Last_Name FROM [Child] WHERE First_Name = @FirstName AND Last_Name = @LastName AND IdUser=@UserId";
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@FirstName", f.txt_ChildFName.Text);
+                cmd.Parameters.AddWithValue("@LastName", f.txt_ChildLName.Text);
+                cmd.Parameters.AddWithValue("@UserId",userId);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows) {
+                    Bunifu.Snackbar.Show(f, "Two children can't have the same name", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
+                    verif = false;
+                }
+                
+                reader.Close();
+                cmd.Dispose();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             try
             {
                 int n = int.Parse(f.txt_Home_School_Dist.Text);
@@ -290,7 +317,7 @@ namespace Organize_Me
                 con = new SqlConnection();
                 con.ConnectionString = this.ConnectionString;
                 con.Open();
-                foreach (Child c in f.Children)
+                foreach (Childd c in f.Children)
                 {
                     cmd = new SqlCommand();
                     cmd.CommandText = "INSERT INTO Child VALUES(@UserId,@FName,@School_Name,@Education_Level,@Gender,@LName,@BDate,@Home_School_Distance)";
@@ -303,7 +330,7 @@ namespace Organize_Me
                     cmd.Parameters.AddWithValue("@Education_Level", c.EduLvl);
                     cmd.Parameters.AddWithValue("@School_Name", c.SchoolName);                    
                     cmd.Parameters.AddWithValue("@Home_School_Distance", c.Home_School_Distance);
-                    cmd.Parameters.AddWithValue("@Gender", c.Gender);
+                    cmd.Parameters.AddWithValue("@Gender", c.Gendder);
                     cmd.ExecuteNonQuery();
                     cmd.Dispose();
                 }

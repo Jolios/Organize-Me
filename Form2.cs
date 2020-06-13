@@ -4,6 +4,7 @@ using Bunifu.UI.WinForms;
 using Bunifu.UI.WinForms.BunifuButton;
 using DataViz::Bunifu.DataViz.WinForms;
 using EnvDTE;
+using Organize_Me.Properties;
 using Syncfusion.Windows.Forms.Tools;
 using Syncfusion.WinForms.Input;
 using Syncfusion.WinForms.Input.Enums;
@@ -23,6 +24,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
+using System.Speech;
+using System.Speech.Recognition;
 
 namespace Organize_Me
 {
@@ -30,7 +33,10 @@ namespace Organize_Me
     {
         [DllImport("user32.dll")]
         private static extern long LockWindowUpdate(IntPtr Handle);
+        public bool isListening = true;
         private int CurrentUserId;
+        private Image UserImage=Resources.kindpng_4952535;
+        private String ConnectionString = @"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False";
         public Form2(int CurrentUserId)
         {
             InitializeComponent();
@@ -46,14 +52,17 @@ namespace Organize_Me
         private void Form2_Load(object sender, EventArgs args)
         {
             bunifuPages1.SetPage(0);
+            edit_fonts();
             render_spline();
             load_circle_bars();
             this.sfCalendar1.SelectionChanged += SfCalendar1_SelectionChanged;
             sfCalendar1.SelectedDate = DateTime.Now.Date;
             this.sfCalendar1.DrawCell += SfCalendar1_DrawCell;
+            this.flowLayoutPanel1.AutoScroll = true;
+            this.sfScrollFrame1.Control = flowLayoutPanel1;
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.CommandText = "SELECT Photo,First_Name+' '+Last_Name as Full_Name FROM [User] WHERE Id=@UserId";
@@ -65,12 +74,15 @@ namespace Organize_Me
                     byte[] buffer = (byte[])reader["Photo"];
                     MemoryStream ms = new MemoryStream(buffer);
                     Image img = Image.FromStream(ms);
+                    UserImage = img;
                     User_Photo.Image = img;
                     txt_UserName.Text = reader.GetString(1);
                 }
                 reader.Close();
                 cmd.Dispose();
                 con.Close();
+
+                User_Photo.BorderRadius = 40;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -87,7 +99,7 @@ namespace Organize_Me
             }
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.CommandText = "SELECT * FROM Task WHERE IdUser=@UserId ";
@@ -115,19 +127,41 @@ namespace Organize_Me
                     endTime = reader.GetString(10);
                     RelationToTarget = reader.GetString(8);
                     TargetId = reader.GetInt32(7);
+                    
                     command = new SqlCommand();
-                    connection = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                    connection = new SqlConnection(ConnectionString);
                     connection.Open();
                     command.Connection = connection;
                     if (RelationToTarget.Equals("Father")) command.CommandText = "SELECT Father_FName+' '+Father_LName as Full_Name From Parent WHERE Id=@TargetId";
                     else if (RelationToTarget.Equals("Mother")) command.CommandText = "SELECT Mother_FName+' '+Mother_LName as Full_Name FROM Parent WHERE Id=@TargetId";
                     else
                     {
-                        command.CommandText = string.Format("SELECT First_Name +' '+ Last_Name as Full_Name FROM [{0}] WHERE Id=@TargetId", RelationToTarget);
+                        command.CommandText = string.Format("SELECT First_Name +' '+ Last_Name as Full_Name,Gender FROM [{0}] WHERE Id=@TargetId", RelationToTarget);
                     }
                     command.Parameters.AddWithValue("@TargetId", TargetId);
                     rd = command.ExecuteReader();
                     rd.Read();
+                    switch (RelationToTarget)
+                    {
+                        case "Father":
+                            tc.bunifuPictureBox1.Image = Resources.Father;
+                            break;
+                        case "Mother":
+                            tc.bunifuPictureBox1.Image = Resources.Mother;
+                            break;
+                        case "Child":
+                            tc.bunifuPictureBox1.Image = Resources.Children;
+                            break;
+                        case "Spouse":
+                            if (rd.GetString(1).Equals("Male")) tc.bunifuPictureBox1.Image = Resources.Spouse_Male;
+                            else tc.bunifuPictureBox1.Image = Resources.Spouse_Female;
+                            break;
+                        case "User":
+                            tc.bunifuPictureBox1.Image = UserImage;
+                            tc.bunifuPictureBox1.IsCircle = true;
+                            break;
+                        default: break;
+                    }
                     if (startDate == selectedDate)
                     {
 
@@ -173,7 +207,7 @@ namespace Organize_Me
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -218,7 +252,7 @@ namespace Organize_Me
             bunifuPages2.SetPage(0);
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -277,7 +311,7 @@ namespace Organize_Me
             bunifuPages2.SetPage(1);
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.CommandText = "SELECT * FROM Spouse WHERE IdUser=@UserId";
@@ -317,7 +351,7 @@ namespace Organize_Me
             bunifuPages2.SetPage(2);
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -366,7 +400,7 @@ namespace Organize_Me
             String Last_Name = selectedvalue.Substring(selectedvalue.IndexOf(" ") + 1);
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 con.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandText = "SELECT * FROM Child WHERE IdUser=@UserId AND First_Name=@FirstName AND Last_Name=@LastName";
@@ -487,12 +521,12 @@ namespace Organize_Me
             }
         }
 
-        private void btn_Profile_Click(object sender, EventArgs e)
+        public void btn_Profile_Click(object sender, EventArgs e)
         {
             bunifuPages1.SetPage(4);
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -513,6 +547,7 @@ namespace Organize_Me
                     MemoryStream ms = new MemoryStream(buffer);
                     Image img = Image.FromStream(ms);
                     pb_user.Image = img;
+                    pb_user.IsCircle = true;
                 }
                 reader.Close();
                 cmd.Dispose();
@@ -525,19 +560,19 @@ namespace Organize_Me
             }
         }
 
-        private void btn_Family_Click(object sender, EventArgs e)
+        public void btn_Family_Click(object sender, EventArgs e)
         {
             bunifuPages1.SetPage(3);
         }
 
-        private void btn_Dashboard_Click(object sender, EventArgs e)
+        public void btn_Dashboard_Click(object sender, EventArgs e)
         {
             bunifuPages1.SetPage(0);
             render_spline();
             load_circle_bars();
         }
 
-        private void btn_Calendar_Click(object sender, EventArgs e)
+        public void btn_Calendar_Click(object sender, EventArgs e)
         {
             bunifuPages1.SetPage(1);
         }
@@ -564,7 +599,7 @@ namespace Organize_Me
             }
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -616,7 +651,7 @@ namespace Organize_Me
             }
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -658,6 +693,28 @@ namespace Organize_Me
             }
             try
             {
+                SqlConnection con = new SqlConnection();
+                con.ConnectionString = this.ConnectionString;
+                SqlCommand cmd = new SqlCommand();
+                con.Open();
+                cmd.CommandText = "SELECT First_Name,Last_Name FROM [Child] WHERE First_Name = @FirstName AND Last_Name = @LastName AND IdUser=@UserId";
+                cmd.Connection = con;
+                cmd.Parameters.AddWithValue("@FirstName", this.txt_ChildFName.Text);
+                cmd.Parameters.AddWithValue("@LastName", this.txt_ChildLName.Text);
+                cmd.Parameters.AddWithValue("@UserId", this.CurrentUserId);
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    Bunifu.Snackbar.Show(this, "Two children can't have the same name", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
+                    return;
+
+                }
+                reader.Close();
+                cmd.Dispose();
+                con.Close();
+            }catch(Exception ex) { MessageBox.Show(ex.Message); }
+            try
+            {
                 int n = int.Parse(txt_Home_School_Dist.Text);
             }
             catch (FormatException)
@@ -670,7 +727,7 @@ namespace Organize_Me
             String Last_Name = selectedvalue.Substring(selectedvalue.IndexOf(" ") + 1);
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -713,7 +770,7 @@ namespace Organize_Me
             int id = Convert.ToInt32(bunifuDataGridView1.SelectedRows[0].Cells[0].Value);
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -737,15 +794,18 @@ namespace Organize_Me
             opnfd.InitialDirectory = "D:\\";
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
-                pb_user.Image = new Bitmap(opnfd.FileName);
+                UserImage = new Bitmap(opnfd.FileName);
+                pb_user.Image = UserImage;
                 pb_user.Update();
                 pb_user.Refresh();
-                MessageBox.Show(opnfd.FileName);
+                User_Photo.Image = UserImage;
+                pb_user.Update();
+                pb_user.Refresh();
             }
             byte[] buffer = File.ReadAllBytes(opnfd.FileName);
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -772,7 +832,7 @@ namespace Organize_Me
             }
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -786,10 +846,11 @@ namespace Organize_Me
                 cmd.Parameters.AddWithValue("@Email", txt_Email.Text);
                 cmd.Parameters.AddWithValue("@Password", txt_Password.Text);
                 cmd.Parameters.AddWithValue("@Id", CurrentUserId);
+                cmd.ExecuteNonQuery();
                 cmd.Dispose();
                 con.Close();
                 Bunifu.Snackbar.Show(this, "Edit successful", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Success);
-
+                Form2_Load(new object(), new EventArgs());
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -799,7 +860,7 @@ namespace Organize_Me
             try
             {
                 int id;
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -837,7 +898,7 @@ namespace Organize_Me
             try
             {
                 int id;
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -882,7 +943,7 @@ namespace Organize_Me
             try
             {
                 int id;
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -911,7 +972,6 @@ namespace Organize_Me
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
-
         private void render_spline()
         {
             Canvas canvas = new Canvas();
@@ -920,7 +980,7 @@ namespace Organize_Me
             int i = 1;
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -938,7 +998,8 @@ namespace Organize_Me
                 // Add data sets to canvas   
                 canvas.addData(datapoint);
                 //render canvas   
-                bunifuDataViz1.colorSet.Add(Color.ForestGreen);
+                bunifuDataViz1.colorSet.Add(Color.DarkGray);
+                bunifuDataViz1.AxisXGridColor = Color.White;
                 bunifuDataViz1.Render(canvas);
                 cmd.Dispose();
                 con.Close();
@@ -950,7 +1011,7 @@ namespace Organize_Me
             int performed;
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source = DESKTOP-HSUI4QK; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False");
+                SqlConnection con = new SqlConnection(ConnectionString);
                 SqlCommand cmd = new SqlCommand();
                 con.Open();
                 cmd.Connection = con;
@@ -1057,6 +1118,94 @@ namespace Organize_Me
                 reader.Close();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+
+        }
+        private void bunifuImageButton1_Click_1(object sender, EventArgs e)
+        {
+            SpeechRecognitionEngine RecognitionEngine = new SpeechRecognitionEngine();
+            if (isListening == false)
+            {
+                Choices commands = new Choices(new string[] { "dashboard", "calendar", "tasks", "family", "profile" });
+                GrammarBuilder grammarBuilder = new GrammarBuilder(commands);
+                grammarBuilder.Culture = new System.Globalization.CultureInfo("en-US");
+                Grammar grammar = new Grammar(grammarBuilder);
+                RecognitionEngine.LoadGrammarAsync(grammar);
+                RecognitionEngine.SetInputToDefaultAudioDevice();
+                RecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+                RecognitionEngine.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(RecognitionEngine_SpeechRecognized);
+            }
+            else RecognitionEngine.RecognizeAsyncStop();
+            isListening = !isListening;
+
+
+        }
+        private void RecognitionEngine_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            switch (e.Result.Text)
+            {
+                case "dashboard":
+                    btn_Dashboard_Click(new object(), new EventArgs());
+                    break;
+                case "calendar":
+                    btn_Calendar_Click(new object(), new EventArgs());
+                    break;
+                case "tasks":
+                    btn_Tasks_Click(new object(), new EventArgs());
+                    break;
+                case "family":
+                    btn_Family_Click(new object(), new EventArgs());
+                    break;
+                case "profile":
+                    btn_Profile_Click(new object(), new EventArgs());
+                    break;
+                default:
+                    MessageBox.Show(e.Result.Text);
+                    break;
+            }
+        }
+        private void edit_fonts()
+        {
+            Font font = new Font("Segoe UI", 10);
+            bunifuLabel1.Font = font;
+            bunifuLabel33.Font = font;
+            bunifuLabel43.Font = font;
+            bunifuLabel48.Font = font;
+            Label_Parent_D1.Font = font;
+            Label_Parent_D2.Font = font;
+            bunifuLabel20.Font = font;
+            bunifuLabel18.Font = font;
+            bunifuLabel3.Font  = font;
+            bunifuLabel4.Font  = font;
+            bunifuLabel16.Font = font;
+            bunifuLabel35.Font = font;
+            font = new Font("Segoe UI", 8);
+            bunifuLabel8.Font = font;
+            bunifuLabel5.Font = font;
+            bunifuLabel27.Font = font;
+            bunifuLabel28.Font = font;
+            bunifuLabel41.Font = font;
+            bunifuLabel42.Font = font;
+            bunifuLabel46.Font = font;
+            bunifuLabel47.Font = font;
+            font = new Font("Segoe UI",8,FontStyle.Bold);
+            label_userDone.Font = font;
+            label_userTotal.Font = font;
+            label_spouseDone.Font = font;
+            label_spouseTotal.Font = font;
+            label_parentsDone.Font = font;
+            label_parentsTotal.Font = font;
+            label_childrenDone.Font = font;
+            label_childrenTotal.Font = font;
+
+
+
+
+
+
+
+
+
+
 
         }
     }

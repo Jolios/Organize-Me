@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="OrganizeMeDB" Class="OrganizeMeDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-HSUI4QK;Initial Catalog=OrganizeMeDB;Integrated Security=True" SettingsObjectName="Organize_Me.Properties.Settings" SettingsPropertyName="OrganizeMeDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Child" Member="Childs">
+    <Type Name="Child">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="First_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="School_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Education_Level" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Last_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Birth_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Home_School_Dist" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="User_Child" Member="User" ThisKey="IdUser" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Parent" Member="Parents">
+    <Type Name="Parent">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUser" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Father_FName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mother_FName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Mother_LName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Housing" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="Father_LName" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="MotherBDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="FatherBDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="User_Parent" Member="User" ThisKey="IdUser" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Spouse" Member="Spouses">
+    <Type Name="Spouse">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUser" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="First_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Last_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="BDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Job" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Health" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="User_Spouse" Member="User" ThisKey="IdUser" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Target" Member="Targets">
+    <Type Name="Target">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Relation" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="Target_Task" Member="Tasks" ThisKey="Id,Relation" OtherKey="IdTarget,relationTarget" Type="Task" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Task" Member="Tasks">
+    <Type Name="Task">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IdUser" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Start_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="End_Date" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IdTarget" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="relationTarget" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="StartTime" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="EndTime" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Column Name="ToleratedTime" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TaskCompleted" Type="System.String" DbType="VarChar(4)" CanBeNull="true" />
+      <Association Name="Target_Task" Member="Target" ThisKey="IdTarget,relationTarget" OtherKey="Id,Relation" Type="Target" IsForeignKey="true" />
+      <Association Name="User_Task" Member="User" ThisKey="IdUser" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="First_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Last_Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Job" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Photo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Mail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Marital_Status" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Children_Num" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BDate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="User_Child" Member="Childs" ThisKey="Id" OtherKey="IdUser" Type="Child" />
+      <Association Name="User_Parent" Member="Parents" ThisKey="Id" OtherKey="IdUser" Type="Parent" />
+      <Association Name="User_Spouse" Member="Spouses" ThisKey="Id" OtherKey="IdUser" Type="Spouse" />
+      <Association Name="User_Task" Member="Tasks" ThisKey="Id" OtherKey="IdUser" Type="Task" />
+    </Type>
+  </Table>
+</Database>

@@ -160,9 +160,10 @@ namespace Organize_Me
             this.btn_Calendar = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btn_Dashboard = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.User_Photo = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.btn_Profile = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.txt_UserName = new Bunifu.UI.WinForms.BunifuLabel();
-            this.User_Photo = new System.Windows.Forms.PictureBox();
+            this.bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
             this.Header = new System.Windows.Forms.Panel();
             this.btn_CLose = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -305,6 +306,7 @@ namespace Organize_Me
             this.label_Parents = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.pb_user = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cb_MaritalStatus = new Bunifu.UI.WinForms.BunifuDropdown();
             this.txt_address = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
@@ -318,10 +320,10 @@ namespace Organize_Me
             this.txt_Password = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.txt_Email = new Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox();
             this.btn_EditPhoto = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.pb_user = new System.Windows.Forms.PictureBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.bunifuLabel11 = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel10 = new Bunifu.UI.WinForms.BunifuLabel();
+            this.sfScrollFrame1 = new Syncfusion.WinForms.Controls.SfScrollFrame();
             this.SideGradient.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.User_Photo)).BeginInit();
@@ -349,9 +351,9 @@ namespace Organize_Me
             this.tabPage8.SuspendLayout();
             this.panel6.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_user)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_user)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuFormDock1
@@ -677,14 +679,29 @@ namespace Organize_Me
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.User_Photo);
             this.panel2.Controls.Add(this.btn_Profile);
             this.panel2.Controls.Add(this.txt_UserName);
-            this.panel2.Controls.Add(this.User_Photo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(237, 196);
             this.panel2.TabIndex = 0;
+            // 
+            // User_Photo
+            // 
+            this.User_Photo.AllowFocused = false;
+            this.User_Photo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.User_Photo.BorderRadius = 50;
+            this.User_Photo.Image = global::Organize_Me.Properties.Resources.kindpng_4952535;
+            this.User_Photo.IsCircle = true;
+            this.User_Photo.Location = new System.Drawing.Point(80, 19);
+            this.User_Photo.Name = "User_Photo";
+            this.User_Photo.Size = new System.Drawing.Size(81, 81);
+            this.User_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.User_Photo.TabIndex = 6;
+            this.User_Photo.TabStop = false;
+            this.User_Photo.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Square;
             // 
             // btn_Profile
             // 
@@ -765,19 +782,42 @@ namespace Organize_Me
             this.txt_UserName.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.txt_UserName.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
-            // User_Photo
+            // bunifuImageButton1
             // 
-            this.User_Photo.Image = ((System.Drawing.Image)(resources.GetObject("User_Photo.Image")));
-            this.User_Photo.Location = new System.Drawing.Point(80, 30);
-            this.User_Photo.Name = "User_Photo";
-            this.User_Photo.Size = new System.Drawing.Size(81, 68);
-            this.User_Photo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.User_Photo.TabIndex = 1;
-            this.User_Photo.TabStop = false;
+            this.bunifuImageButton1.ActiveImage = null;
+            this.bunifuImageButton1.AllowAnimations = true;
+            this.bunifuImageButton1.AllowBuffering = false;
+            this.bunifuImageButton1.AllowZooming = false;
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButton1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.ErrorImage")));
+            this.bunifuImageButton1.FadeWhenInactive = false;
+            this.bunifuImageButton1.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.bunifuImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.Image")));
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.ImageLocation = null;
+            this.bunifuImageButton1.ImageMargin = 20;
+            this.bunifuImageButton1.ImageSize = new System.Drawing.Size(20, 17);
+            this.bunifuImageButton1.ImageZoomSize = new System.Drawing.Size(40, 37);
+            this.bunifuImageButton1.InitialImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.InitialImage")));
+            this.bunifuImageButton1.Location = new System.Drawing.Point(759, 0);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Rotation = 0;
+            this.bunifuImageButton1.ShowActiveImage = true;
+            this.bunifuImageButton1.ShowCursorChanges = true;
+            this.bunifuImageButton1.ShowImageBorders = true;
+            this.bunifuImageButton1.ShowSizeMarkers = false;
+            this.bunifuImageButton1.Size = new System.Drawing.Size(40, 37);
+            this.bunifuImageButton1.TabIndex = 9;
+            this.bunifuImageButton1.ToolTipText = "";
+            this.bunifuImageButton1.WaitOnLoad = false;
+            this.bunifuImageButton1.Zoom = 20;
+            this.bunifuImageButton1.ZoomSpeed = 10;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click_1);
             // 
             // Header
             // 
             this.Header.BackColor = System.Drawing.Color.White;
+            this.Header.Controls.Add(this.bunifuImageButton1);
             this.Header.Controls.Add(this.btn_CLose);
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.Header.Location = new System.Drawing.Point(237, 0);
@@ -1254,7 +1294,7 @@ namespace Organize_Me
             this.cp_spouse.Location = new System.Drawing.Point(3, 18);
             this.cp_spouse.Name = "cp_spouse";
             this.cp_spouse.ProgressBackColor = System.Drawing.Color.Gainsboro;
-            this.cp_spouse.ProgressColor = System.Drawing.Color.Purple;
+            this.cp_spouse.ProgressColor = System.Drawing.Color.ForestGreen;
             this.cp_spouse.SecondaryFont = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.cp_spouse.Size = new System.Drawing.Size(100, 100);
             this.cp_spouse.SubScriptColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
@@ -1443,7 +1483,7 @@ namespace Organize_Me
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label1);
-            this.panel5.Location = new System.Drawing.Point(584, 43);
+            this.panel5.Location = new System.Drawing.Point(568, 43);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(235, 39);
             this.panel5.TabIndex = 0;
@@ -1463,17 +1503,18 @@ namespace Organize_Me
             // panel4
             // 
             this.panel4.Controls.Add(this.flowLayoutPanel1);
-            this.panel4.Location = new System.Drawing.Point(581, 88);
+            this.panel4.Location = new System.Drawing.Point(565, 88);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(238, 340);
+            this.panel4.Size = new System.Drawing.Size(264, 340);
             this.panel4.TabIndex = 5;
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(238, 340);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(264, 340);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // sfCalendar1
@@ -1845,10 +1886,10 @@ namespace Organize_Me
             this.bunifuPages2.Location = new System.Drawing.Point(3, 32);
             this.bunifuPages2.Multiline = true;
             this.bunifuPages2.Name = "bunifuPages2";
-            this.bunifuPages2.Page = this.tabPage6;
-            this.bunifuPages2.PageIndex = 0;
-            this.bunifuPages2.PageName = "tabPage6";
-            this.bunifuPages2.PageTitle = "tabPage6";
+            this.bunifuPages2.Page = this.tabPage8;
+            this.bunifuPages2.PageIndex = 2;
+            this.bunifuPages2.PageName = "tabPage8";
+            this.bunifuPages2.PageTitle = "tabPage8";
             this.bunifuPages2.SelectedIndex = 0;
             this.bunifuPages2.Size = new System.Drawing.Size(834, 409);
             this.bunifuPages2.TabIndex = 194;
@@ -4142,16 +4183,31 @@ namespace Organize_Me
             // tabPage5
             // 
             this.tabPage5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage5.Controls.Add(this.pb_user);
             this.tabPage5.Controls.Add(this.groupBox5);
             this.tabPage5.Controls.Add(this.btn_EditUser);
             this.tabPage5.Controls.Add(this.groupBox4);
             this.tabPage5.Controls.Add(this.btn_EditPhoto);
-            this.tabPage5.Controls.Add(this.pb_user);
             this.tabPage5.Location = new System.Drawing.Point(4, 4);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(837, 444);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Profile";
+            // 
+            // pb_user
+            // 
+            this.pb_user.AllowFocused = false;
+            this.pb_user.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pb_user.BorderRadius = 0;
+            this.pb_user.Image = global::Organize_Me.Properties.Resources.kindpng_4952535;
+            this.pb_user.IsCircle = false;
+            this.pb_user.Location = new System.Drawing.Point(35, 35);
+            this.pb_user.Name = "pb_user";
+            this.pb_user.Size = new System.Drawing.Size(150, 144);
+            this.pb_user.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_user.TabIndex = 75;
+            this.pb_user.TabStop = false;
+            this.pb_user.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Custom;
             // 
             // groupBox5
             // 
@@ -4823,16 +4879,6 @@ namespace Organize_Me
             this.btn_EditPhoto.UseDefaultRadiusAndThickness = true;
             this.btn_EditPhoto.Click += new System.EventHandler(this.btn_EditPhoto_Click);
             // 
-            // pb_user
-            // 
-            this.pb_user.Image = ((System.Drawing.Image)(resources.GetObject("pb_user.Image")));
-            this.pb_user.Location = new System.Drawing.Point(27, 46);
-            this.pb_user.Name = "pb_user";
-            this.pb_user.Size = new System.Drawing.Size(169, 144);
-            this.pb_user.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pb_user.TabIndex = 2;
-            this.pb_user.TabStop = false;
-            // 
             // bunifuLabel11
             // 
             this.bunifuLabel11.AutoEllipsis = false;
@@ -4896,6 +4942,7 @@ namespace Organize_Me
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).EndInit();
             this.tabPage4.ResumeLayout(false);
@@ -4916,10 +4963,10 @@ namespace Organize_Me
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pb_user)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pb_user)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4941,7 +4988,6 @@ namespace Organize_Me
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btn_Family;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btn_Tasks;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btn_Calendar;
-        private System.Windows.Forms.PictureBox User_Photo;
         private Bunifu.UI.WinForms.BunifuLabel txt_UserName;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btn_Profile;
@@ -4958,7 +5004,6 @@ namespace Organize_Me
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel11;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel10;
         private System.Windows.Forms.TabPage tabPage5;
-        private System.Windows.Forms.PictureBox pb_user;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btn_EditPhoto;
         public Bunifu.UI.WinForms.BunifuTextbox.BunifuTextBox txt_Email;
         private System.Windows.Forms.GroupBox groupBox4;
@@ -5101,5 +5146,9 @@ namespace Organize_Me
         private System.Windows.Forms.DataGridViewTextBoxColumn Starts;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ends;
         private System.Windows.Forms.DataGridViewTextBoxColumn ToleratedTime;
+        private Syncfusion.WinForms.Controls.SfScrollFrame sfScrollFrame1;
+        private Bunifu.UI.WinForms.BunifuPictureBox User_Photo;
+        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
+        private Bunifu.UI.WinForms.BunifuPictureBox pb_user;
     }
 }

@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.5, 12.625" name="OrganizeMeDB">
+  <DataContextMoniker Name="/OrganizeMeDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="eda0e3f2-8ee8-4a71-ada4-0810ab3f0e22" absoluteBounds="5.375, 3.25, 2, 2.5401025390624996">
+      <DataClassMoniker Name="/OrganizeMeDBDataContext/Child" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99aef56a-3efb-417d-8b9b-87855a09872b" absoluteBounds="5.3900000000000006, 3.71, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6e9a94aa-fef2-40a0-9757-12964fada726" absoluteBounds="3.5, 9.875, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/OrganizeMeDBDataContext/Parent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d56ef83e-9d9c-4137-a999-2e6e69437c2b" absoluteBounds="3.515, 10.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f74cdc3b-f74a-4cd2-920e-d979796cd10a" absoluteBounds="1.25, 1.25, 2, 2.347801106770834">
+      <DataClassMoniker Name="/OrganizeMeDBDataContext/Spouse" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4f138e0a-9a3f-4d70-801d-aee2391e8350" absoluteBounds="1.2650000000000001, 1.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9a1626ed-ee5a-48d4-ab38-87b37dccd5b4" absoluteBounds="1.5, 7.125, 2, 1.1939925130208335">
+      <DataClassMoniker Name="/OrganizeMeDBDataContext/Target" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1f798fc1-169d-48b1-856e-2bf59ddd1a88" absoluteBounds="1.5150000000000006, 7.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="29f7a05b-8202-4c4e-bf44-5b966d62a9d6" absoluteBounds="6.5, 6.375, 2, 3.3093082682291675">
+      <DataClassMoniker Name="/OrganizeMeDBDataContext/Task" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cdf39d9b-db49-4280-8edf-d654e588ddda" absoluteBounds="6.515, 6.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e09f260b-8736-40c8-9313-345f2115724f" absoluteBounds="10.25, 5.625, 2, 3.1170068359375005">
+      <DataClassMoniker Name="/OrganizeMeDBDataContext/User" />
+      <nestedChildShapes>
+        <elementListCompartment Id="74a30d89-9841-408c-8f48-26e4e3f25114" absoluteBounds="10.265, 6.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 7.72199625651042); (6.5 : 7.72199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OrganizeMeDBDataContext/Target/Target_Task" />
+      <nodes>
+        <classShapeMoniker Id="9a1626ed-ee5a-48d4-ab38-87b37dccd5b4" />
+        <classShapeMoniker Id="29f7a05b-8202-4c4e-bf44-5b966d62a9d6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.25 : 6.05130176953125); (5.90625 : 6.05130176953125); (5.90625 : 5.7901025390625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OrganizeMeDBDataContext/User/User_Child" />
+      <nodes>
+        <classShapeMoniker Id="e09f260b-8736-40c8-9313-345f2115724f" />
+        <classShapeMoniker Id="eda0e3f2-8ee8-4a71-ada4-0810ab3f0e22" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 8.7420068359375); (11.25 : 11.1450512695312); (5.5 : 11.1450512695312)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OrganizeMeDBDataContext/User/User_Parent" />
+      <nodes>
+        <classShapeMoniker Id="e09f260b-8736-40c8-9313-345f2115724f" />
+        <classShapeMoniker Id="6e9a94aa-fef2-40a0-9757-12964fada726" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.25 : 5.625); (11.25 : 2.42390055338542); (3.25 : 2.42390055338542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OrganizeMeDBDataContext/User/User_Spouse" />
+      <nodes>
+        <classShapeMoniker Id="e09f260b-8736-40c8-9313-345f2115724f" />
+        <classShapeMoniker Id="f74cdc3b-f74a-4cd2-920e-d979796cd10a" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(10.25 : 7.55850341796875); (8.5 : 7.55850341796875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OrganizeMeDBDataContext/User/User_Task" />
+      <nodes>
+        <classShapeMoniker Id="e09f260b-8736-40c8-9313-345f2115724f" />
+        <classShapeMoniker Id="29f7a05b-8202-4c4e-bf44-5b966d62a9d6" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
