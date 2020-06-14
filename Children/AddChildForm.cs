@@ -90,6 +90,8 @@ namespace Organize_Me
                     if (distanceUnit.SelectedItem.ToString().Equals("km")) distance *= 1000;
                     cmd.Parameters.AddWithValue("@HomeSchoolDist", distance);
                     cmd.ExecuteNonQuery();
+                    cmd.CommandText = "UPDATE [User] SET Children_Num=Children_Num+1 WHERE Id=@UserID";
+                    cmd.ExecuteNonQuery();
                     cmd.Dispose();
                     con.Close();
                     Bunifu.Snackbar.Show(this, "Child added", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Success);
