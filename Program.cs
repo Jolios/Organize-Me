@@ -16,7 +16,7 @@ namespace Organize_Me
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2(1));
+            Application.Run(new Form1());
         }
     }
 }

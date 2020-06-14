@@ -35,7 +35,7 @@ namespace Organize_Me
         private static extern long LockWindowUpdate(IntPtr Handle);
         public bool isListening = true;
         private int CurrentUserId;
-        private Image UserImage=Resources.kindpng_4952535;
+        private Image UserImage;
         private String ConnectionString = @"Data Source = .\; Initial Catalog = OrganizeMeDB; Integrated Security = True; Pooling = False";
         public Form2(int CurrentUserId)
         {

@@ -23,7 +23,7 @@ namespace Organize_Me
         private CRUD crud = new CRUD();
         public System.Drawing.Image userImage =Resources.kindpng_4952535;
         public int CurrentUserId = 0;
-        internal static int NuChildren = 0;
+        public static int NuChildren = 0;
         private bool isDivorcedAndHasChildren = false;
         private bool isDivorced = false;
         internal List<Childd> Children;
@@ -60,6 +60,8 @@ namespace Organize_Me
             Label_Parent_D2.Font = segoe;
             Label_Parent_D3.Font = segoe;
             Label_Parent_D4.Font = segoe;
+            rd_hasChild_no.Checked = true;
+            rd_hasChild_yes.Checked = false;
         }
         private void passwordChar(BunifuTextBox txt)
         {
@@ -161,6 +163,10 @@ namespace Organize_Me
                     switch (dr)
                     {
                         case DialogResult.Yes:
+                            try
+                            {
+                                NuChildren = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("How many ?", "How many children do you have ?"));
+                            }catch(FormatException ex) { MessageBox.Show("Pease insert a number"); }
                             isDivorcedAndHasChildren = true;
                             bunifuPages1.SetPage(4);
                             break;
@@ -215,30 +221,36 @@ namespace Organize_Me
         {
             if (crud.ChildVerification(this))
             {
-
+                String gender = rd_ChildGender1.Checked ? "Female" : "Male";
+                int distance = int.Parse(txt_Home_School_Dist.Text);
+                if (distanceUnit.SelectedItem.ToString().Equals("km")) distance *= 1000;
+                Childd c = new Childd(txt_ChildFName.Text, txt_SchoolName.Text, txt_EduLvl.Text, gender, txt_ChildLName.Text, DP_ChildBDate.Value.Date, distance);
                 if (count < NuChildren)
                 {
-                    String gender = rd_ChildGender1.Checked ? "Female" : "Male";
-                    int distance = int.Parse(txt_Home_School_Dist.Text);
-                    if (distanceUnit.SelectedItem.ToString().Equals("km")) distance *= 1000;
-                    Childd c = new Childd(txt_ChildFName.Text, txt_SchoolName.Text, txt_EduLvl.Text, gender, txt_ChildLName.Text, DP_ChildBDate.Value.Date, distance);
                     Children.Add(c);
                     count++;
                     txt_ChildLName.Text = String.Empty;
                     txt_ChildFName.Text = String.Empty;
                     txt_EduLvl.Text = String.Empty;
                     txt_Home_School_Dist.Text = String.Empty;
-                    rd_ChildGender1.Checked = false;
+                    txt_SchoolName.Text = String.Empty;
+                    rd_ChildGender1.Checked = true;
                     rd_ChildGender2.Checked = false;
                     if (count == 2) label6.Text = "2nd Child";
                     else if (count == 3) label6.Text = "3rd Child";
                     else label6.Text = count + "th Child";
+
+                }
+                else if (count==NuChildren)
+                {
+                    Children.Add(c);
+                    bunifuPages1.SetPage(5);
                 }
                 else
                 {
                     bunifuPages1.SetPage(5);
                 }
-        }
+            }
     }
         
         private void btnClose_Click(object sender, EventArgs e)

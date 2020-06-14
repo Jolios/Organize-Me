@@ -17,6 +17,7 @@ namespace Organize_Me
         private SqlConnection con;
         private SqlCommand cmd;
         private string ConnectionString;
+        private List<String> ChildrenNames = new List<String>();
         public int currentId { get; set; }
         public CRUD()
         {
@@ -172,7 +173,7 @@ namespace Organize_Me
                 string m_status = f.cb_MaritalStatus.SelectedItem.ToString();
                 string gender = f.rd_UserGender1.Checked ? "Female" : "Male";
                 DateTime BirthDate = f.DP_bDate.Value.Date;
-                int ChildNumber = f.rd_hasChild_yes.Checked ? int.Parse(f.txt_ChN.Text) : 0;
+                int ChildNumber = f.rd_hasChild_yes.Checked ? int.Parse(f.txt_ChN.Text) : Form1.NuChildren;
                 MemoryStream ms = new MemoryStream();
                 f.userImage.Save(ms, f.userImage.RawFormat);
                 byte[] buffer= ms.ToArray();
@@ -189,6 +190,7 @@ namespace Organize_Me
                 cmd.Parameters.AddWithValue("@childNum", ChildNumber);
                 cmd.Parameters.AddWithValue("@BDate", BirthDate);
                 cmd.ExecuteNonQuery();
+
                 Bunifu.Snackbar.Show(f, "User added", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Success);
             }
             catch (Exception ex)
@@ -277,33 +279,11 @@ namespace Organize_Me
                 Bunifu.Snackbar.Show(f, "Please fill out all fields", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
                 verif = false;
             }
-            try { 
-
-
-                int userId = getCurrentUserId(f.txt_SignUpEmail.Text);
-                con = new SqlConnection();
-                con.ConnectionString = this.ConnectionString;
-                cmd = new SqlCommand();
-                con.Open();
-                cmd.CommandText = "SELECT First_Name,Last_Name FROM [Child] WHERE First_Name = @FirstName AND Last_Name = @LastName AND IdUser=@UserId";
-                cmd.Connection = con;
-                cmd.Parameters.AddWithValue("@FirstName", f.txt_ChildFName.Text);
-                cmd.Parameters.AddWithValue("@LastName", f.txt_ChildLName.Text);
-                cmd.Parameters.AddWithValue("@UserId",userId);
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows) {
-                    Bunifu.Snackbar.Show(f, "Two children can't have the same name", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
-                    verif = false;
-                }
+            if (ChildrenNames.Contains(f.txt_ChildFName.Text + " " + f.txt_ChildLName.Text)) {
+                Bunifu.Snackbar.Show(f, "Two children can't have the same name", 3000, Snackbar.Views.SnackbarDesigner.MessageTypes.Error);
+                verif = false;
+            } else ChildrenNames.Add(f.txt_ChildFName.Text + " " + f.txt_ChildLName.Text);
                 
-                reader.Close();
-                cmd.Dispose();
-                con.Close();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
             try
             {
                 int n = int.Parse(f.txt_Home_School_Dist.Text);
