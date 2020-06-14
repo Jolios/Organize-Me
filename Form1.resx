@@ -815,6 +815,43 @@
         SUVORK5CYII=
 </value>
   </data>
+  <data name="btn_facebook_singUp.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAQAAAAAqCAYAAABcMoWCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQiSURBVHhe7Z09aBRBGIZTWqZMmTJlyoBNrEwjWFjERg4E
+        iSCSMo0YECuRoM0JEoWIBFEIChpBIRhQAxEjoiimiAgaESWgBE00t37vZNbdM5PT/FzudnheeNi7vZ1v
+        rnnnZ2fn2xaEENqykiTp9gwCQH2oVCo9dpTPWr31dl6q3CjZnxk1vttnhFADZP6bMPrtY7u3Z/2kSqyy
+        MVdzTkvLv5KnL987rtycSYZvPAGAOpD67MvCondfJjUGduj2dt0+WdA2C152tXhNTs8lZ4YnkwPHrya7
+        D14AgB1m7+FLycnz95N7j2aTb4tL3pmuIVAn3eHtuzVZoE4LOO8im67dee4qDv0hAGgM8qRGCBqNS+ZZ
+        Tc33extvThakd2Vl5YcCvnn7md4eoMnZd3TEjQhyGvR23phkfh/ABdxz6GKwQgBoPsqjU969bjQw5G39
+        f7ICXWnPr2FFqAIAaG4Gzt51DYCkDt3bu7bsWt3wc3N+9fyhwABQDM6NPJSV3T0Bdeze5uvLLrqsAi9m
+        PzLsB4iA9J6AeXvG2zwsu6ZTF+pOom4mhIIBQLFQR557bmD9lQFrIdxDPlrqCwUCgGKSmwrM2WGXt3wm
+        O9muC/RAAev8AHGhUYCW8iVrBHq87TPZyT79yI0/gDjRip5vAMre9pns5Lh+PF2eCBYGgGJTGrieNgDz
+        3vaZ0nV/hv8A8fLh01fXCJg6vfWz+b9+DBUCgDjILQlm9wHsuxIMuG2GoUIAEAda4fMqefu7BqCkM7cf
+        vA4WAoA4yO0RyDYJ6YvOKJlHqBAAxEHNBoCNPwBxky4FmrIGIH0GgCkAQNwoi5dXVQOgTKPJ1LN3wUIA
+        EAea5kvm+X5vfzcF6NBJPSoYKgQAcaBRvmQNQJYfwL4rzbfbB8AWYIB40TZ/r+rswdYivNLZY6duBQsC
+        QLHRFn/JvK6EodU7Au2EWwlgKzBAnGifj2QNwLi3fSY72aUflTiAaQBAfOgmv1f2FGBe6TRAyQNCAQCg
+        mOR2Amr43+YtXy37Yb8uYhQAEBe5ZCC1U4TbBW6hkMeCAeIgN/dXtu+16cDysgvczkBJ7x0LBQSAYnDk
+        xFiytPyzIj9bA9DnbV5bdqFeN+yyAytAKDAANDd6lV+aDdg8vTYNWC2pQNoIMBIAKBa66Zcz/2M71B76
+        /y0VsIKjLoKJ5wMAioE67NywX+Zv9bbeuKzwgAJJShmm942FKgWAxqJeX1m9Upn59ZavjfX8IVmgHkMv
+        FHBSJdpWyNuDABqLkviqx5+c/mNPGX/ByHb7bYcsrqYE/Qq+Ws2qtL6o6YESDahR0BEA6oPMnn7O9/aS
+        eVMvAB2yj5sf8v9LCm6UrKJRVaiKEUKNk/lwwtDKXfgJv3rKKu22ynvtqM1EALADmOeUxUvP7NSvt0cI
+        xayWlt/3uBUvSKLQ4wAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btn_facebook_singUp.IdleIconLeftImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAHGSURBVEhLrZbPLkNBFMaLtBohghew0UrEqkST8g4eAE/AjrKwsRNiVfEA9jZEF61/IV6h/iQW
+        9lZqifq+mdNqm5neM+WX/JLpmfPNSa97b8WiqNVqabgJL+AD/BC5Zo17aWkPB+EZeAm13MOcxKNBcxwe
+        wW8YCjOHMC7HuUHDKLyGf+UKjsixrWCD34QN/8UtTMjxv6DIy6WlAnfgClyGa/AYtlOQ4y0ozELt32Qf
+        9kq0AWqLZrcVnpmRFtOkvWS8HD0SawF11yBSrjdM2s8qlkxIwOcJuA134Qn0kWIzHzgtjQcT6z74aqrR
+        bDDAp1vLmMxhbtqWVJQYeLJrFcMyh7l5W1LxyEDVrlU0D1qwJRVVBviC9FGRcyNB76qNOHlnw4tdOwkZ
+        VLARJ89s6HQzhAwq2YgTczNs2bWTN8hnpG5SzmVuvG2PvT7yDITcpt3eDFP1UKev3Uw3g4oSMaEc1LxU
+        QwfxzKxELCgcmK3OhA7ak/ZfUEzAO7PtJ2QQ3/Tun3RsDMAyuzxoB93AIWl1g4Yk5I/bJ2wnahAzzPZL
+        WzRozsJz2HyT+AZ9wSKck+1wEOY/kOvwDA5KmfUMPIV5mJKyh1jsB02scknplC9KAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="btn_twitter_signUp.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAQAAAAAqCAYAAABcMoWCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8

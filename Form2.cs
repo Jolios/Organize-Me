@@ -53,8 +53,13 @@ namespace Organize_Me
         {
             bunifuPages1.SetPage(0);
             edit_fonts();
+            for (int i = 2010; i <= DateTime.Now.Year; i++)
+            {
+                cb_years.Items.Add(i);
+            }
             render_spline();
             load_circle_bars();
+            
             this.sfCalendar1.SelectionChanged += SfCalendar1_SelectionChanged;
             sfCalendar1.SelectedDate = DateTime.Now.Date;
             this.sfCalendar1.DrawCell += SfCalendar1_DrawCell;
@@ -988,7 +993,7 @@ namespace Organize_Me
                 cmd.Connection = con;
                 foreach (String month in months)
                 {
-                    cmd.CommandText = String.Format("SELECT COUNT(Id) FROM Task WHERE IdUser={0} AND MONTH(Start_Date)={1}", CurrentUserId, i);
+                    cmd.CommandText = String.Format("SELECT COUNT(Id) FROM Task WHERE IdUser={0} AND MONTH(Start_Date)={1} AND YEAR(Start_Date)={2}", CurrentUserId, i,cb_years.SelectedItem.ToString());
 
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.Read()) datapoint.addLabely(month, reader.GetInt32(0));
@@ -1210,6 +1215,11 @@ namespace Organize_Me
 
 
 
+        }
+
+        private void cb_years_SelectedValueChanged(object sender, EventArgs e)
+        {
+            render_spline();
         }
     }
 }

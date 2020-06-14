@@ -151,3 +151,5 @@ C:\Users\Acer\Source\Repos\KaisRouini\Organize-Me\bin\Debug\Tweetinvi.Credential
 C:\Users\Acer\Source\Repos\KaisRouini\Organize-Me\bin\Debug\Tweetinvi.Logic.xml
 C:\Users\Acer\Source\Repos\KaisRouini\Organize-Me\bin\Debug\Tweetinvi.Streams.xml
 C:\Users\Acer\Source\Repos\KaisRouini\Organize-Me\bin\Debug\Tweetinvi.WebLogic.xml
+C:\Users\Acer\Source\Repos\KaisRouini\Organize-Me\bin\Debug\Facebook.dll
+C:\Users\Acer\Source\Repos\KaisRouini\Organize-Me\bin\Debug\Facebook.xml

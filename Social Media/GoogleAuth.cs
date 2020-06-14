@@ -48,6 +48,7 @@ namespace Organize_Me
             f.txt_SignUpEmail.Text = userInfo.Email;
             f.FirstName = userInfo.GivenName;
             f.LastName = userInfo.FamilyName;
+            await credential.RevokeTokenAsync(CancellationToken.None);
             f.bunifuPages1.SetPage(1);
 
         }

@@ -114,6 +114,9 @@
     <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="Facebook, Version=6.0.10.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <HintPath>packages\Facebook.7.0.10-beta\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Apis, Version=1.46.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>packages\Google.Apis.1.46.0\lib\net45\Google.Apis.dll</HintPath>
     </Reference>
@@ -246,6 +249,7 @@
     <Compile Include="Children\AddChildForm.Designer.cs">
       <DependentUpon>AddChildForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Social Media\FacebookAuth.cs" />
     <Compile Include="Tasks\AddTaskForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -260,7 +264,7 @@
     <Compile Include="Tasks\EditTaskForm.Designer.cs">
       <DependentUpon>EditTaskForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GoogleAuth.cs" />
+    <Compile Include="Social Media\GoogleAuth.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -286,7 +290,7 @@
     <Compile Include="Tasks\TaskCard.Designer.cs">
       <DependentUpon>TaskCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="TwitterAuth.cs" />
+    <Compile Include="Social Media\TwitterAuth.cs" />
     <Compile Include="VoiceRecognition.cs" />
     <EmbeddedResource Include="Children\AddChildForm.resx">
       <DependentUpon>AddChildForm.cs</DependentUpon>

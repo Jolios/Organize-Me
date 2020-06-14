@@ -257,6 +257,12 @@ namespace Organize_Me
             TwitterAuth t = new TwitterAuth(this);
             t.login();
         }
+
+        private void btn_facebook_singUp_Click(object sender, EventArgs e)
+        {
+            FacebookAuth f = new FacebookAuth(this);
+            f.login();
+        }
     }
 }
 

@@ -169,6 +169,8 @@ namespace Organize_Me
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuPages1 = new Bunifu.UI.WinForms.BunifuPages();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.bunifuCards6 = new Bunifu.Framework.UI.BunifuCards();
+            this.cb_years = new Bunifu.UI.WinForms.BunifuDropdown();
             this.bunifuCards5 = new Bunifu.Framework.UI.BunifuCards();
             this.label_parentsTotal = new Bunifu.UI.WinForms.BunifuLabel();
             this.label_parentsDone = new Bunifu.UI.WinForms.BunifuLabel();
@@ -198,7 +200,7 @@ namespace Organize_Me
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.cp_user = new Bunifu.UI.WinForms.BunifuCircleProgress();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
-            this.bunifuDataViz1 = new DataViz::Bunifu.DataViz.WinForms.BunifuDataViz();
+            this.bunifuDataViz1 = new Bunifu.DataViz.WinForms.BunifuDataViz();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -331,6 +333,7 @@ namespace Organize_Me
             this.panel1.SuspendLayout();
             this.bunifuPages1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.bunifuCards6.SuspendLayout();
             this.bunifuCards5.SuspendLayout();
             this.bunifuCards4.SuspendLayout();
             this.bunifuCards3.SuspendLayout();
@@ -941,6 +944,7 @@ namespace Organize_Me
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tabPage1.Controls.Add(this.bunifuCards6);
             this.tabPage1.Controls.Add(this.bunifuCards5);
             this.tabPage1.Controls.Add(this.bunifuCards4);
             this.tabPage1.Controls.Add(this.bunifuCards3);
@@ -952,6 +956,51 @@ namespace Organize_Me
             this.tabPage1.Size = new System.Drawing.Size(837, 444);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Dashboard";
+            // 
+            // bunifuCards6
+            // 
+            this.bunifuCards6.BackColor = System.Drawing.Color.White;
+            this.bunifuCards6.BorderRadius = 5;
+            this.bunifuCards6.BottomSahddow = false;
+            this.bunifuCards6.color = System.Drawing.Color.White;
+            this.bunifuCards6.Controls.Add(this.cb_years);
+            this.bunifuCards6.LeftSahddow = false;
+            this.bunifuCards6.Location = new System.Drawing.Point(700, 3);
+            this.bunifuCards6.Name = "bunifuCards6";
+            this.bunifuCards6.RightSahddow = false;
+            this.bunifuCards6.ShadowDepth = 20;
+            this.bunifuCards6.Size = new System.Drawing.Size(120, 32);
+            this.bunifuCards6.TabIndex = 9;
+            // 
+            // cb_years
+            // 
+            this.cb_years.BackColor = System.Drawing.Color.White;
+            this.cb_years.BorderRadius = 1;
+            this.cb_years.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
+            this.cb_years.DisabledColor = System.Drawing.Color.Gray;
+            this.cb_years.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cb_years.DropdownBorderThickness = Bunifu.UI.WinForms.BunifuDropdown.BorderThickness.Thin;
+            this.cb_years.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cb_years.DropDownTextAlign = Bunifu.UI.WinForms.BunifuDropdown.TextAlign.Left;
+            this.cb_years.FillDropDown = false;
+            this.cb_years.FillIndicator = false;
+            this.cb_years.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cb_years.ForeColor = System.Drawing.Color.Purple;
+            this.cb_years.FormattingEnabled = true;
+            this.cb_years.Icon = null;
+            this.cb_years.IndicatorColor = System.Drawing.Color.Purple;
+            this.cb_years.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
+            this.cb_years.ItemBackColor = System.Drawing.Color.White;
+            this.cb_years.ItemBorderColor = System.Drawing.Color.White;
+            this.cb_years.ItemForeColor = System.Drawing.Color.Purple;
+            this.cb_years.ItemHeight = 26;
+            this.cb_years.ItemHighLightColor = System.Drawing.Color.Thistle;
+            this.cb_years.Location = new System.Drawing.Point(0, 0);
+            this.cb_years.Name = "cb_years";
+            this.cb_years.Size = new System.Drawing.Size(120, 32);
+            this.cb_years.TabIndex = 7;
+            this.cb_years.Text = null;
+            this.cb_years.SelectedValueChanged += new System.EventHandler(this.cb_years_SelectedValueChanged);
             // 
             // bunifuCards5
             // 
@@ -1433,7 +1482,7 @@ namespace Organize_Me
             this.bunifuCards1.color = System.Drawing.Color.White;
             this.bunifuCards1.Controls.Add(this.bunifuDataViz1);
             this.bunifuCards1.LeftSahddow = false;
-            this.bunifuCards1.Location = new System.Drawing.Point(17, 17);
+            this.bunifuCards1.Location = new System.Drawing.Point(17, 38);
             this.bunifuCards1.Name = "bunifuCards1";
             this.bunifuCards1.RightSahddow = false;
             this.bunifuCards1.ShadowDepth = 20;
@@ -1459,11 +1508,11 @@ namespace Organize_Me
             0,
             0});
             this.bunifuDataViz1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bunifuDataViz1.Location = new System.Drawing.Point(-8, 3);
+            this.bunifuDataViz1.Location = new System.Drawing.Point(-5, 0);
             this.bunifuDataViz1.Name = "bunifuDataViz1";
             this.bunifuDataViz1.Size = new System.Drawing.Size(811, 231);
             this.bunifuDataViz1.TabIndex = 1;
-            this.bunifuDataViz1.Theme = DataViz::Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme1;
+            this.bunifuDataViz1.Theme = Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme1;
             this.bunifuDataViz1.Title = "";
             // 
             // tabPage2
@@ -4929,6 +4978,7 @@ namespace Organize_Me
             this.panel1.ResumeLayout(false);
             this.bunifuPages1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.bunifuCards6.ResumeLayout(false);
             this.bunifuCards5.ResumeLayout(false);
             this.bunifuCards5.PerformLayout();
             this.bunifuCards4.ResumeLayout(false);
@@ -5150,5 +5200,7 @@ namespace Organize_Me
         private Bunifu.UI.WinForms.BunifuPictureBox User_Photo;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
         private Bunifu.UI.WinForms.BunifuPictureBox pb_user;
+        private Bunifu.Framework.UI.BunifuCards bunifuCards6;
+        private Bunifu.UI.WinForms.BunifuDropdown cb_years;
     }
 }
