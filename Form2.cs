@@ -57,9 +57,8 @@ namespace Organize_Me
             {
                 cb_years.Items.Add(i);
             }
-            render_spline();
+            cb_years.SelectedItem = DateTime.Now.Year;
             load_circle_bars();
-            
             this.sfCalendar1.SelectionChanged += SfCalendar1_SelectionChanged;
             sfCalendar1.SelectedDate = DateTime.Now.Date;
             this.sfCalendar1.DrawCell += SfCalendar1_DrawCell;

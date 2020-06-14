@@ -976,6 +976,7 @@ namespace Organize_Me
             // 
             this.cb_years.BackColor = System.Drawing.Color.White;
             this.cb_years.BorderRadius = 1;
+            this.cb_years.Color = System.Drawing.Color.White;
             this.cb_years.Direction = Bunifu.UI.WinForms.BunifuDropdown.Directions.Down;
             this.cb_years.DisabledColor = System.Drawing.Color.Gray;
             this.cb_years.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -985,16 +986,16 @@ namespace Organize_Me
             this.cb_years.FillDropDown = false;
             this.cb_years.FillIndicator = false;
             this.cb_years.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cb_years.ForeColor = System.Drawing.Color.Purple;
+            this.cb_years.ForeColor = System.Drawing.Color.Black;
             this.cb_years.FormattingEnabled = true;
             this.cb_years.Icon = null;
-            this.cb_years.IndicatorColor = System.Drawing.Color.Purple;
+            this.cb_years.IndicatorColor = System.Drawing.Color.DarkGray;
             this.cb_years.IndicatorLocation = Bunifu.UI.WinForms.BunifuDropdown.Indicator.Right;
             this.cb_years.ItemBackColor = System.Drawing.Color.White;
             this.cb_years.ItemBorderColor = System.Drawing.Color.White;
-            this.cb_years.ItemForeColor = System.Drawing.Color.Purple;
+            this.cb_years.ItemForeColor = System.Drawing.Color.Black;
             this.cb_years.ItemHeight = 26;
-            this.cb_years.ItemHighLightColor = System.Drawing.Color.Thistle;
+            this.cb_years.ItemHighLightColor = System.Drawing.Color.GhostWhite;
             this.cb_years.Location = new System.Drawing.Point(0, 0);
             this.cb_years.Name = "cb_years";
             this.cb_years.Size = new System.Drawing.Size(120, 32);

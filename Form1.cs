@@ -13,6 +13,7 @@ using Bunifu.UI.WinForms.BunifuButton;
 using System.IO;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using Organize_Me.Properties;
 
 namespace Organize_Me
 {
@@ -20,7 +21,7 @@ namespace Organize_Me
     {
         internal static int count = 1;
         private CRUD crud = new CRUD();
-        public byte[] buffer;
+        public System.Drawing.Image userImage =Resources.kindpng_4952535;
         public int CurrentUserId = 0;
         internal static int NuChildren = 0;
         private bool isDivorcedAndHasChildren = false;
@@ -139,7 +140,7 @@ namespace Organize_Me
             {
                MessageBox.Show(opnfd.FileName);
             }
-            this.buffer = File.ReadAllBytes(opnfd.FileName);
+            this.userImage = new Bitmap(opnfd.FileName);
             
         }
         private void btn_Next1_Click(object sender, EventArgs e)

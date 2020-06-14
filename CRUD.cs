@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Data;
+using System.IO;
 
 namespace Organize_Me
 {
@@ -172,12 +173,16 @@ namespace Organize_Me
                 string gender = f.rd_UserGender1.Checked ? "Female" : "Male";
                 DateTime BirthDate = f.DP_bDate.Value.Date;
                 int ChildNumber = f.rd_hasChild_yes.Checked ? int.Parse(f.txt_ChN.Text) : 0;
+                MemoryStream ms = new MemoryStream();
+                f.userImage.Save(ms, f.userImage.RawFormat);
+                byte[] buffer= ms.ToArray();
+                ms.Close();   
                 cmd.Parameters.AddWithValue("@password", f.txt_SignUpPassword.Text);
                 cmd.Parameters.AddWithValue("@f_name",f.txt_UserFName.Text);
                 cmd.Parameters.AddWithValue("@l_name", f.txt_UserLName.Text);
                 cmd.Parameters.AddWithValue("@gender", gender);
                 cmd.Parameters.AddWithValue("@job", f.txt_UserJob.Text);
-                cmd.Parameters.AddWithValue("@photo",f.buffer);
+                cmd.Parameters.AddWithValue("@photo",buffer);
                 cmd.Parameters.AddWithValue("@email", f.txt_SignUpEmail.Text);
                 cmd.Parameters.AddWithValue("@address", f.txt_Adress.Text);
                 cmd.Parameters.AddWithValue("@marital_status", m_status);
