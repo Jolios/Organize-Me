@@ -1216,7 +1216,6 @@ namespace Organize_Me
 
 
         }
-
         private void cb_years_SelectedValueChanged(object sender, EventArgs e)
         {
             render_spline();

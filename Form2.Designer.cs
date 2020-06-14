@@ -200,7 +200,7 @@ namespace Organize_Me
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
             this.cp_user = new Bunifu.UI.WinForms.BunifuCircleProgress();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
-            this.bunifuDataViz1 = new Bunifu.DataViz.WinForms.BunifuDataViz();
+            this.bunifuDataViz1 = new DataViz::Bunifu.DataViz.WinForms.BunifuDataViz();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -1512,7 +1512,7 @@ namespace Organize_Me
             this.bunifuDataViz1.Name = "bunifuDataViz1";
             this.bunifuDataViz1.Size = new System.Drawing.Size(811, 231);
             this.bunifuDataViz1.TabIndex = 1;
-            this.bunifuDataViz1.Theme = Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme1;
+            this.bunifuDataViz1.Theme = DataViz::Bunifu.DataViz.WinForms.BunifuDataViz._theme.theme1;
             this.bunifuDataViz1.Title = "";
             // 
             // tabPage2
